@@ -51,53 +51,54 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     final style = SystemUiOverlayStyle.light;
 
-    return Column(
-      children: [
-        Flexible(
-          child: AnnotatedRegion<SystemUiOverlayStyle>(
+    final height = MediaQuery.of(context).size.height;
+    return MediaQuery.removePadding(
+      removeTop: true,
+      context: context,
+      child: ListView(
+        children: [
+          AnnotatedRegion<SystemUiOverlayStyle>(
             value: style.copyWith(
-              statusBarColor: Colors.redAccent,
-              systemNavigationBarColor: Colors.redAccent,
+              statusBarColor: Colors.redAccent.withAlpha(120),
+              systemNavigationBarColor: Colors.redAccent.withAlpha(120),
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
             ),
-            child: Container(color: Colors.red),
+            child: Container(
+              color: Colors.red,
+              height: height,
+            ),
           ),
-        ),
-        Flexible(
-          child: AnnotatedRegion<SystemUiOverlayStyle>(
+          AnnotatedRegion<SystemUiOverlayStyle>(
             value: style.copyWith(
-              statusBarColor: Colors.greenAccent,
-              systemNavigationBarColor: Colors.greenAccent,
+              statusBarColor: Colors.greenAccent.withAlpha(120),
+              systemNavigationBarColor: Colors.greenAccent.withAlpha(120),
+              statusBarBrightness: Brightness.light,
+              statusBarIconBrightness: Brightness.light,
             ),
-            child: Container(color: Colors.green),
+            child: Container(
+              color: Colors.green,
+              height: height,
+            ),
           ),
-        ),
-        Flexible(
-          child: AnnotatedRegion<SystemUiOverlayStyle>(
+          AnnotatedRegion<SystemUiOverlayStyle>(
             value: style.copyWith(
-              statusBarColor: Colors.blueAccent,
-              systemNavigationBarColor: Colors.blueAccent,
+              statusBarColor: Colors.blueAccent.withAlpha(120),
+              systemNavigationBarColor: Colors.blueAccent.withAlpha(120),
+              statusBarBrightness: Brightness.dark,
+              statusBarIconBrightness: Brightness.dark,
             ),
-            child: Container(color: Colors.blue),
+            child: Container(
+              color: Colors.blue,
+              height: height,
+            ),
           ),
-        ),
-      ],
+        ],
+      ),
     );
   }
 }
